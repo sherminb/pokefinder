@@ -30,6 +30,7 @@
 		2A9C93CC1EA1414D00D38E14 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A9C93A81EA1414D00D38E14 /* Podfile */; };
 		2A9C93CD1EA1414D00D38E14 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C93A91EA1414D00D38E14 /* README.md */; };
 		2A9C93CE1EA1414D00D38E14 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A9C93AB1EA1414D00D38E14 /* index.html */; };
+		2A9C93E71EA6B3C700D38E14 /* PokeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C93E61EA6B3C700D38E14 /* PokeAnnotation.swift */; };
 		8A04FBAEBF147B355078BBE5 /* Pods_pokefinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567874154979AA3361EFE911 /* Pods_pokefinderTests.framework */; };
 		9BA2766EAB0016B74BE596D3 /* Pods_pokefinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11301786E6AC7972F86293D3 /* Pods_pokefinder.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		2A9C93A91EA1414D00D38E14 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2A9C93AB1EA1414D00D38E14 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2A9C93DD1EA1426900D38E14 /* PokeFinder-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PokeFinder-Bridging-Header.h"; sourceTree = "<group>"; };
+		2A9C93E61EA6B3C700D38E14 /* PokeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeAnnotation.swift; sourceTree = "<group>"; };
 		567874154979AA3361EFE911 /* Pods_pokefinderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pokefinderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF26C9451ABDDEA4659962F /* Pods-pokefinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokefinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-pokefinder/Pods-pokefinder.release.xcconfig"; sourceTree = "<group>"; };
 		7566D27170A7E3E8DFD37A1C /* Pods-pokefinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokefinderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pokefinderTests/Pods-pokefinderTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		2A9C933D1EA13E9500D38E14 /* pokefinder */ = {
 			isa = PBXGroup;
 			children = (
+				2A9C93E21EA6B39F00D38E14 /* Model */,
 				2A9C93631EA1414D00D38E14 /* geofire-objc */,
 				2A9C933E1EA13E9500D38E14 /* AppDelegate.swift */,
 				2A9C93401EA13E9500D38E14 /* ViewController.swift */,
@@ -244,6 +247,14 @@
 				2A9C93AB1EA1414D00D38E14 /* index.html */,
 			);
 			path = site;
+			sourceTree = "<group>";
+		};
+		2A9C93E21EA6B39F00D38E14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A9C93E61EA6B3C700D38E14 /* PokeAnnotation.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		94E06B6E75F375CB2619ECB5 /* Frameworks */ = {
@@ -504,6 +515,7 @@
 				2A9C93CD1EA1414D00D38E14 /* README.md in Sources */,
 				2A9C93411EA13E9500D38E14 /* ViewController.swift in Sources */,
 				2A9C93C01EA1414D00D38E14 /* GFGeoHashQuery.m in Sources */,
+				2A9C93E71EA6B3C700D38E14 /* PokeAnnotation.swift in Sources */,
 				2A9C933F1EA13E9500D38E14 /* AppDelegate.swift in Sources */,
 				2A9C93BE1EA1414D00D38E14 /* GFBase32Utils.m in Sources */,
 				2A9C93BF1EA1414D00D38E14 /* GFGeoHash.m in Sources */,
