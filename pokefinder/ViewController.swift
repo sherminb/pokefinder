@@ -86,6 +86,13 @@ class ViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDeleg
     }
 
     @IBAction func spotPokeman(_ sender: Any) {
+      //put a pokemon at the center of the map
+        
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        
+        //randomly select a pokemon
+        let rand = arc4random_uniform(151)+1 //we have 151 pokemons
+        createSighting(forLocation: loc, withPokemon: Int(rand))//add the pokemon to geofire
         
     }
 
