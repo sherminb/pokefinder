@@ -70,12 +70,23 @@ class ViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDeleg
         
         
     }
+    func showOnMap(location: CLLocation){
+        
+        let q = geoFire!.query(at: location, withRadius: 2.5)//look for pokemons around
+        let _ = q!.observe(.keyEntered, with: {(key,location) in
+            if let key = key, let location = location{
+                let anno = PokeAnnotation(coordinate: location.coordinate, pokeId: Int(key)!)
+                self.mapView.addAnnotation(anno)
+            }
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     @IBAction func spotPokeman(_ sender: Any) {
+        
     }
 
 }
