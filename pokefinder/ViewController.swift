@@ -61,14 +61,54 @@ class ViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDeleg
         }
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        var newAnnotation : MKAnnotationView?
+        var annotationView : MKAnnotationView?
+        let annoIdentifier = "Pokemon"
+        
         if annotation.isKind(of: MKUserLocation.self){
-            newAnnotation = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
-            newAnnotation?.image =  UIImage(named: "ash")
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
+            annotationView?.image =  UIImage(named: "ash")
+        }else if let deqAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoIdentifier) {
+            annotationView = deqAnno
+            annotationView?.annotation = annotation
+        } else {
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annoIdentifier)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView = av
         }
-        return newAnnotation
+        
+        if let annotationView = annotationView, let anno = annotation as? PokeAnnotation {
+            
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "\(anno.pokeId)")
+            let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btn.setImage(UIImage(named: "map"), for: .normal)
+            annotationView.rightCalloutAccessoryView = btn
+        }
+
+        return annotationView
         
         
+    }
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        //update the map when user pans
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        showOnMap(location: loc)
+        
+    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        //called when tapped on the pokemon,, show how to get to the pokemon
+        if let ano = view.annotation as? PokeAnnotation{
+            let place = MKPlacemark(coordinate: ano.coordinate)
+            let dest = MKMapItem(placemark: place)
+            dest.name = "Pokemon Sighting"
+            
+            let regionDistance : CLLocationDistance = 1000
+            let regionSpan = MKCoordinateRegionMakeWithDistance(ano.coordinate, regionDistance, regionDistance)
+            
+            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving] as [String : Any]
+            
+            MKMapItem.openMaps(with: [dest], launchOptions: options)        }
     }
     func showOnMap(location: CLLocation){
         
